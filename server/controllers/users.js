@@ -22,7 +22,7 @@ module.exports = {
                             user.save();
                             const token = jwt.sign({ _id: user._id, email: user.email }, process.env.SECRET, { expiresIn: '30d' })
                             const { verifycode, ...userdata } = user._doc;
-                            // sendEmail('rustamovnurbek02@gmail.com', `${user.email}, user connected to telegram`)
+                            sendEmail('rustamovnurbek02@gmail.com', `${user.email}, user connected to telegram`)
                             return res.status(200).json({ success: true, user: {...userdata}, token: `Bearer ${token}` })
                         }else{
                             return res.json({ success: false, message: 'Не верной парол' })
@@ -60,8 +60,8 @@ module.exports = {
                         usercolor: color
                     })
                 }
-                console.log(code)
-                // sendEmail(req.body.email, code)
+//                 console.log(code)
+                sendEmail(req.body.email, code)
                 res.status(200).json({ success: true, message: 'Код отправлено', _id: profile._id, register: profile.registered })
             }
         }catch(err){
