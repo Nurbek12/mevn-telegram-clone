@@ -1,0 +1,24 @@
+<template>
+    <div class="smiles">
+        <div v-for="(sm, i) in smiles" 
+        :key="i" class="smile"
+        @click="$emit('putsmile', sm)">
+            {{ sm }}
+        </div>
+    </div>
+</template>
+
+<script>
+import smiles from './smiles';
+
+export default {
+    name: 'Smiles',
+    data: () => ({
+        smiles,
+    })
+}
+</script>
+
+<style>
+
+</style>
